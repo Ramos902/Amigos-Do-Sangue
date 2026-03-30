@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Amigos do Sangue - Acesso Restrito (Organizadores)</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configuração do Tailwind para Cores e Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#D50000',
+                        brandHover: '#9B0000',
+                        darkBg: '#000000',
+                        darkCard: '#121212'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        /* ========================================================= */
+        /* AJUSTES DE ACESSIBILIDADE E ALTO CONTRASTE                */
+        /* ========================================================= */
+        html {
+            font-size: 18px; 
+            transition: font-size 0.3s ease;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 500;
+        }
+
+        html:not(.dark):not(.alto-contraste) .text-gray-400, 
+        html:not(.dark):not(.alto-contraste) .text-gray-500, 
+        html:not(.dark):not(.alto-contraste) .text-gray-600 {
+            color: #1a1a1a !important; 
+            font-weight: 600 !important;
+        }
+        
+        html:not(.dark):not(.alto-contraste) .border-gray-100, 
+        html:not(.dark):not(.alto-contraste) .border-gray-200 {
+            border-color: #cccccc !important;
+        }
+        
+        html:not(.dark):not(.alto-contraste) .bg-gray-50 {
+            background-color: #ffffff !important;
+        }
+
+        /* TEMA DE ALTO CONTRASTE DE ACESSIBILIDADE */
+        html.alto-contraste body,
+        html.alto-contraste main,
+        html.alto-contraste header,
+        html.alto-contraste footer,
+        html.alto-contraste div {
+            background-color: #000000 !important;
+            color: #FFFFFF !important;
+            border-color: #FFFF00 !important;
+        }
+
+        html.alto-contraste h1, html.alto-contraste h2, html.alto-contraste h3, 
+        html.alto-contraste h4, html.alto-contraste p, html.alto-contraste span, 
+        html.alto-contraste i, html.alto-contraste label, html.alto-contraste li {
+            color: #FFFFFF !important;
+        }
+
+        html.alto-contraste a, 
+        html.alto-contraste button {
+            color: #FFFF00 !important;
+            border-color: #FFFF00 !important;
+        }
+
+        html.alto-contraste .bg-brand, 
+        html.alto-contraste .bg-gray-100,
+        html.alto-contraste .bg-gray-200,
+        html.alto-contraste .bg-red-50,
+        html.alto-contraste .bg-white,
+        html.alto-contraste input,
+        html.alto-contraste select {
+            background-color: #000000 !important;
+            border: 2px solid #FFFF00 !important;
+            color: #FFFF00 !important;
+        }
+
+        html.alto-contraste .text-brand {
+            color: #FFFF00 !important;
+        }
+
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+        }
+        
+        #mobile-menu.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- CABEÇALHO SIMPLIFICADO (ÁREA RESTRITA) -->
+    <header class="bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo apontando de volta para a raiz -->
+                <a href="../index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                    <div class="bg-brand text-white p-2.5 rounded-lg flex-shrink-0">
+                        <i data-lucide="droplet" class="w-6 h-6"></i>
+                    </div>
+                    <h1 class="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+                        Amigos<br><span class="text-brand">do Sangue</span>
+                    </h1>
+                </a>
+
+                <!-- Ações e Acessibilidade -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <a href="../index.html" class="hidden md:flex text-sm font-bold text-gray-500 hover:text-brand transition-colors items-center gap-2 mr-4 border-r border-gray-200 dark:border-gray-700 pr-4">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar ao site
+                    </a>
+
+                    <!-- Menu de Acessibilidade -->
+                    <div class="relative">
+                        <button id="btn-acessibilidade" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Menu de Acessibilidade">
+                            <i data-lucide="accessibility" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <!-- Dropdown Acessibilidade -->
+                        <div id="menu-acessibilidade" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
+                            <div class="mb-3">
+                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho do Texto</span>
+                                <div class="flex justify-between gap-2">
+                                    <button onclick="alterarFonte(-2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
+                                    <button onclick="resetarFonte()" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
+                                    <button onclick="alterarFonte(2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
+                                </div>
+                            </div>
+                            <hr class="border-gray-200 dark:border-gray-800 mb-3">
+                            <button onclick="toggleAltoContraste()" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                                <i data-lucide="eye" class="w-4 h-4"></i> Alto Contraste
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botão Modo Escuro -->
+                    <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Alternar Tema">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL (Formulário de Login) -->
+    <main class="flex-grow w-full flex items-center justify-center p-4 py-12 relative overflow-hidden">
+        
+        <!-- Fundo Decorativo -->
+        <div class="absolute inset-0 z-0 flex items-center justify-center opacity-5 dark:opacity-10 pointer-events-none">
+            <i data-lucide="shield" class="w-96 h-96 text-brand"></i>
+        </div>
+
+        <div class="w-full max-w-md bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-2xl p-8 sm:p-12 relative z-10">
+            
+            <div class="text-center mb-10">
+                <div class="w-16 h-16 bg-red-50 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-red-100 dark:border-red-900/30">
+                    <i data-lucide="lock-keyhole" class="w-8 h-8 text-brand"></i>
+                </div>
+                <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">Acesso Restrito</h2>
+                <p class="text-gray-600 dark:text-gray-400 font-medium text-sm">Área exclusiva para organizadores (UBSs, Hemocentros e Parceiros).</p>
+            </div>
+
+            <form action="dashboard.html" method="GET" class="space-y-6">
+                <!-- E-mail -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">E-mail Institucional</label>
+                    <div class="relative">
+                        <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                        <input type="email" required placeholder="ubs.centro@angatuba.sp.gov.br" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 pl-12 pr-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white transition-all shadow-sm">
+                    </div>
+                </div>
+                
+                <!-- Senha -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Senha</label>
+                        <button type="button" class="text-xs font-bold text-brand hover:underline">Esqueceu?</button>
+                    </div>
+                    <div class="relative">
+                        <i data-lucide="key-round" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                        <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 pl-12 pr-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white transition-all shadow-sm">
+                    </div>
+                </div>
+
+                <!-- Botão Entrar -->
+                <button type="submit" class="w-full bg-brand hover:bg-brandHover text-white font-bold py-4 rounded-xl transition-colors shadow-lg text-lg mt-8 flex justify-center items-center gap-2">
+                    Entrar no Sistema <i data-lucide="log-in" class="w-5 h-5"></i>
+                </button>
+            </form>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 text-center">
+                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Sua instituição ainda não tem acesso?</p>
+                <button class="text-brand font-bold text-sm mt-1 hover:underline">Solicite o credenciamento aqui.</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- RODAPÉ SIMPLIFICADO -->
+    <footer class="bg-white dark:bg-darkCard border-t border-gray-200 dark:border-gray-800 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <div class="flex items-center gap-2 opacity-80">
+                    <i data-lucide="droplet" class="w-4 h-4 text-brand"></i>
+                    <span class="font-bold text-sm text-gray-900 dark:text-white">Amigos do Sangue</span>
+                </div>
+
+                <div class="text-xs font-medium text-gray-500 text-center">
+                    Área Administrativa - Protegida e Monitorada
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interação -->
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // ==========================================
+        // LÓGICA DE TEMA E ACESSIBILIDADE 
+        // ==========================================
+        const htmlElement = document.documentElement;
+        
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            const iconName = isDark ? 'sun' : 'moon';
+            
+            const themeIcons = document.querySelectorAll('#theme-icon');
+            themeIcons.forEach(icon => icon.setAttribute('data-lucide', iconName));
+            lucide.createIcons();
+            
+            localStorage.setItem('temaAmigosSangue', isDark ? 'dark' : 'light');
+        }
+
+        const themeBtn = document.getElementById('theme-toggle');
+        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+        const btnAcessibilidade = document.getElementById('btn-acessibilidade');
+        const menuAcessibilidade = document.getElementById('menu-acessibilidade');
+        
+        btnAcessibilidade.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuAcessibilidade.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!btnAcessibilidade.contains(e.target) && !menuAcessibilidade.contains(e.target)) {
+                menuAcessibilidade.classList.add('hidden');
+            }
+        });
+
+        let tamanhoFonteBase = parseInt(localStorage.getItem('tamanhoFonteAmigosSangue')) || 18;
+        
+        function aplicarFonte() {
+            htmlElement.style.fontSize = tamanhoFonteBase + 'px';
+            localStorage.setItem('tamanhoFonteAmigosSangue', tamanhoFonteBase);
+        }
+
+        function alterarFonte(valor) {
+            tamanhoFonteBase += valor;
+            if(tamanhoFonteBase < 14) tamanhoFonteBase = 14; 
+            if(tamanhoFonteBase > 26) tamanhoFonteBase = 26; 
+            aplicarFonte();
+        }
+
+        function resetarFonte() {
+            tamanhoFonteBase = 18;
+            aplicarFonte();
+        }
+
+        function toggleAltoContraste() {
+            htmlElement.classList.toggle('alto-contraste');
+            const isAltoContraste = htmlElement.classList.contains('alto-contraste');
+            localStorage.setItem('altoContrasteAmigosSangue', isAltoContraste);
+            menuAcessibilidade.classList.add('hidden'); 
+        }
+
+        function carregarPreferencias() {
+            aplicarFonte(); 
+            
+            if(localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
+                htmlElement.classList.add('alto-contraste');
+            }
+            
+            if(localStorage.getItem('temaAmigosSangue') === 'dark') {
+                htmlElement.classList.add('dark');
+                const themeIcons = document.querySelectorAll('#theme-icon');
+                themeIcons.forEach(icon => icon.setAttribute('data-lucide', 'sun'));
+                lucide.createIcons();
+            }
+        }
+        
+        carregarPreferencias(); 
+    </script>
+</body>
+</html>

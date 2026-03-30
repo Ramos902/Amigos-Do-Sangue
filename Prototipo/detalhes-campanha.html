@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Amigos do Sangue - Inscrição na Campanha</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configuração do Tailwind para Cores e Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#D50000',
+                        brandHover: '#9B0000',
+                        darkBg: '#000000',
+                        darkCard: '#121212'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        /* ========================================================= */
+        /* AJUSTES DE ACESSIBILIDADE E ALTO CONTRASTE                */
+        /* ========================================================= */
+        html {
+            font-size: 18px; 
+            transition: font-size 0.3s ease;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 500;
+        }
+
+        /* Alto Contraste EXCLUSIVO no Modo Claro Padrão */
+        html:not(.dark):not(.alto-contraste) .text-gray-400, 
+        html:not(.dark):not(.alto-contraste) .text-gray-500, 
+        html:not(.dark):not(.alto-contraste) .text-gray-600 {
+            color: #1a1a1a !important; 
+            font-weight: 600 !important;
+        }
+        
+        html:not(.dark):not(.alto-contraste) .border-gray-100, 
+        html:not(.dark):not(.alto-contraste) .border-gray-200 {
+            border-color: #cccccc !important;
+        }
+        
+        html:not(.dark):not(.alto-contraste) .bg-gray-50 {
+            background-color: #ffffff !important;
+        }
+
+        /* TEMA DE ALTO CONTRASTE DE ACESSIBILIDADE */
+        html.alto-contraste body,
+        html.alto-contraste main,
+        html.alto-contraste header,
+        html.alto-contraste footer,
+        html.alto-contraste div {
+            background-color: #000000 !important;
+            color: #FFFFFF !important;
+            border-color: #FFFF00 !important;
+        }
+
+        html.alto-contraste h1, html.alto-contraste h2, html.alto-contraste h3, 
+        html.alto-contraste h4, html.alto-contraste p, html.alto-contraste span, 
+        html.alto-contraste i, html.alto-contraste label {
+            color: #FFFFFF !important;
+        }
+
+        html.alto-contraste a, 
+        html.alto-contraste button {
+            color: #FFFF00 !important;
+            border-color: #FFFF00 !important;
+        }
+
+        html.alto-contraste .bg-brand, 
+        html.alto-contraste .bg-gray-100,
+        html.alto-contraste .bg-gray-200,
+        html.alto-contraste .bg-red-50,
+        html.alto-contraste .bg-white,
+        html.alto-contraste input,
+        html.alto-contraste select {
+            background-color: #000000 !important;
+            border: 2px solid #FFFF00 !important;
+            color: #FFFF00 !important;
+        }
+
+        html.alto-contraste .text-brand {
+            color: #FFFF00 !important;
+        }
+
+        /* ========================================================= */
+        /* UTILITÁRIOS GERAIS                                        */
+        /* ========================================================= */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+        }
+        
+        #mobile-menu.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- CABEÇALHO (HEADER) SUPERIOR -->
+    <header class="bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                    <div class="bg-brand text-white p-2.5 rounded-lg flex-shrink-0">
+                        <i data-lucide="droplet" class="w-6 h-6"></i>
+                    </div>
+                    <h1 class="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+                        Amigos<br><span class="text-brand">do Sangue</span>
+                    </h1>
+                </a>
+
+                <!-- Navegação Desktop -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Início</a>
+                    <!-- Mantendo a aba Campanhas ativa já que estamos no fluxo dela -->
+                    <a href="campanhas.html" class="font-bold text-brand border-b-2 border-brand py-2 transition-colors hover:text-brandHover">Campanhas</a>
+                    <a href="educativo.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Saiba Mais</a>
+                </nav>
+
+                <!-- Ações e Acessibilidade -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    
+                    <!-- Menu de Acessibilidade -->
+                    <div class="relative">
+                        <button id="btn-acessibilidade" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Menu de Acessibilidade">
+                            <i data-lucide="accessibility" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <!-- Dropdown Acessibilidade -->
+                        <div id="menu-acessibilidade" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
+                            <div class="mb-3">
+                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho do Texto</span>
+                                <div class="flex justify-between gap-2">
+                                    <button onclick="alterarFonte(-2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
+                                    <button onclick="resetarFonte()" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
+                                    <button onclick="alterarFonte(2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
+                                </div>
+                            </div>
+                            <hr class="border-gray-200 dark:border-gray-800 mb-3">
+                            <button onclick="toggleAltoContraste()" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                                <i data-lucide="eye" class="w-4 h-4"></i> Alto Contraste
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botão Modo Escuro -->
+                    <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Alternar Tema">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Botão UBS -->
+                    <a href="admin/login.html" class="hidden md:flex bg-brand hover:bg-brandHover text-white px-5 py-2.5 rounded-xl font-bold transition-colors shadow-md items-center gap-2">
+                        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+                        Área da UBS
+                    </a>
+
+                    <!-- Botão Menu Mobile -->
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-brand p-2 focus:outline-none">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 shadow-lg absolute w-full z-40">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Início</a>
+                <a href="campanhas.html" class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Campanhas</a>
+                <a href="educativo.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Saiba Mais</a>
+                <div class="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
+                <a href="admin/login.html" class="w-full bg-brand text-white font-bold py-3 px-2 rounded-xl flex items-center justify-center gap-2 mt-2">
+                    <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+                    Área da UBS
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL (Formulário e Detalhes) -->
+    <main class="flex-grow w-full py-10 px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <!-- Botão Voltar -->
+            <a href="campanhas.html" class="inline-flex items-center gap-2 text-brand font-bold mb-6 hover:text-brandHover transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> Voltar para campanhas
+            </a>
+
+            <!-- Container Principal -->
+            <div class="bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-lg overflow-hidden">
+                
+                <!-- Parte Superior: Informações da Campanha -->
+                <div class="bg-brand text-white p-8 sm:p-10 relative overflow-hidden">
+                    <!-- Textura de fundo sutil -->
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 20px 20px;"></div>
+                    
+                    <div class="relative z-10">
+                        <span class="inline-block bg-white text-brand text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 shadow-sm">
+                            Inscrições Abertas
+                        </span>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mb-2 leading-tight">Campanha Solidária de Inverno</h2>
+                        <p class="text-red-100 font-medium mb-8 text-lg">Organizado por: UBS Central Angatuba</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm"><i data-lucide="calendar-clock" class="w-6 h-6"></i></div>
+                                <div>
+                                    <span class="block font-bold text-lg">Sábado, 15 de Junho</span>
+                                    <span class="text-red-100 text-sm font-medium">08:00 às 16:00 (Chegar com 15 min de antecedência)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+                                <div>
+                                    <span class="block font-bold text-lg">Posto de Saúde Central</span>
+                                    <span class="text-red-100 text-sm font-medium">Rua Principal, 123 - Centro<br>Angatuba, SP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parte Inferior: Formulário de Inscrição -->
+                <div class="p-8 sm:p-10">
+                    <div class="mb-8 border-b border-gray-200 dark:border-gray-800 pb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="clipboard-edit" class="w-6 h-6 text-brand"></i> Preencha seus dados
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 font-medium">Garanta sua vaga para doação. O processo de inscrição leva menos de 2 minutos.</p>
+                    </div>
+
+                    <!-- Note que a action aponta para a próxima tela do seu fluxo (sucesso.html) -->
+                    <form action="sucesso.html" method="GET" class="space-y-6">
+                        
+                        <!-- Nome Completo -->
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Nome Completo <span class="text-brand">*</span></label>
+                            <input type="text" required placeholder="Digite seu nome completo conforme documento" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 px-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white transition-all shadow-sm">
+                        </div>
+                        
+                        <!-- Telefone e Tipo Sanguíneo (Grid) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Telefone / WhatsApp <span class="text-brand">*</span></label>
+                                <input type="tel" required placeholder="(15) 90000-0000" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 px-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white transition-all shadow-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Tipo Sanguíneo <span class="text-gray-500 font-normal">(Opcional)</span></label>
+                                <div class="relative">
+                                    <select class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 px-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white transition-all shadow-sm appearance-none">
+                                        <option value="">Não sei informar</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                    <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Aviso Legal -->
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-800 mt-6 flex items-start gap-3">
+                            <i data-lucide="shield-check" class="w-6 h-6 flex-shrink-0 text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                            <p class="text-sm font-medium text-blue-800 dark:text-blue-300 leading-relaxed">
+                                Ao confirmar, você concorda que seus dados serão enviados <strong>exclusivamente</strong> ao organizador responsável pela campanha (UBS Central Angatuba) para controle de vagas e contato de confirmação.
+                            </p>
+                        </div>
+
+                        <!-- Botão de Envio -->
+                        <button type="submit" class="w-full bg-brand hover:bg-brandHover text-white font-bold py-4 rounded-xl transition-colors shadow-lg text-lg mt-8 flex justify-center items-center gap-2">
+                            Confirmar Inscrição na Campanha <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dúvidas Rápidas -->
+            <div class="mt-8 text-center">
+                <p class="text-gray-600 dark:text-gray-400 font-medium">
+                    Tem dúvidas se você pode doar? <a href="educativo.html" class="text-brand font-bold hover:underline">Confira os requisitos básicos.</a>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- RODAPÉ (FOOTER) -->
+    <footer class="bg-white dark:bg-darkCard border-t border-gray-200 dark:border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="flex items-center gap-2 opacity-80">
+                    <i data-lucide="droplet" class="w-5 h-5 text-brand"></i>
+                    <span class="font-bold text-gray-900 dark:text-white">Amigos do Sangue</span>
+                    <span class="text-gray-500 text-sm ml-2">© 2026</span>
+                </div>
+
+                <div class="text-sm font-medium text-gray-500 text-center md:text-left">
+                    Projeto de Extensão - Angatuba e Região
+                </div>
+
+                <!-- Acesso Administrativo -->
+                <div>
+                    <a href="admin/login.html" class="text-sm font-bold text-gray-500 hover:text-brand transition-colors flex items-center gap-2">
+                        <i data-lucide="lock" class="w-4 h-4"></i> Acesso Restrito (Organizadores)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interação -->
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // ==========================================
+        // LÓGICA DE TEMA E ACESSIBILIDADE 
+        // ==========================================
+        const htmlElement = document.documentElement;
+        
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            const iconName = isDark ? 'sun' : 'moon';
+            
+            const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
+            themeIcons.forEach(icon => icon.setAttribute('data-lucide', iconName));
+            lucide.createIcons();
+            
+            localStorage.setItem('temaAmigosSangue', isDark ? 'dark' : 'light');
+        }
+
+        const themeBtn = document.getElementById('theme-toggle');
+        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+        const btnAcessibilidade = document.getElementById('btn-acessibilidade');
+        const menuAcessibilidade = document.getElementById('menu-acessibilidade');
+        
+        btnAcessibilidade.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuAcessibilidade.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!btnAcessibilidade.contains(e.target) && !menuAcessibilidade.contains(e.target)) {
+                menuAcessibilidade.classList.add('hidden');
+            }
+        });
+
+        let tamanhoFonteBase = parseInt(localStorage.getItem('tamanhoFonteAmigosSangue')) || 18;
+        
+        function aplicarFonte() {
+            htmlElement.style.fontSize = tamanhoFonteBase + 'px';
+            localStorage.setItem('tamanhoFonteAmigosSangue', tamanhoFonteBase);
+        }
+
+        function alterarFonte(valor) {
+            tamanhoFonteBase += valor;
+            if(tamanhoFonteBase < 14) tamanhoFonteBase = 14; 
+            if(tamanhoFonteBase > 26) tamanhoFonteBase = 26; 
+            aplicarFonte();
+        }
+
+        function resetarFonte() {
+            tamanhoFonteBase = 18;
+            aplicarFonte();
+        }
+
+        function toggleAltoContraste() {
+            htmlElement.classList.toggle('alto-contraste');
+            const isAltoContraste = htmlElement.classList.contains('alto-contraste');
+            localStorage.setItem('altoContrasteAmigosSangue', isAltoContraste);
+            menuAcessibilidade.classList.add('hidden'); 
+        }
+
+        function carregarPreferencias() {
+            aplicarFonte(); 
+            
+            if(localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
+                htmlElement.classList.add('alto-contraste');
+            }
+            
+            if(localStorage.getItem('temaAmigosSangue') === 'dark') {
+                htmlElement.classList.add('dark');
+                const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
+                themeIcons.forEach(icon => icon.setAttribute('data-lucide', 'sun'));
+                lucide.createIcons();
+            }
+        }
+        
+        carregarPreferencias(); 
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
