@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Amigos do Sangue - Campanhas Ativas</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <!-- Configuração do Tailwind para Cores e Dark Mode -->
     <script>
         tailwind.config = {
@@ -27,37 +28,37 @@
             }
         }
     </script>
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        
+
         /* ========================================================= */
         /* AJUSTES DE ACESSIBILIDADE E ALTO CONTRASTE                */
         /* ========================================================= */
         html {
             /* Fonte base controlada pelo JS para acessibilidade */
-            font-size: 18px; 
+            font-size: 18px;
             transition: font-size 0.3s ease;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
+        body {
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
         }
 
         /* Alto Contraste EXCLUSIVO no Modo Claro Padrão */
-        html:not(.dark):not(.alto-contraste) .text-gray-400, 
-        html:not(.dark):not(.alto-contraste) .text-gray-500, 
+        html:not(.dark):not(.alto-contraste) .text-gray-400,
+        html:not(.dark):not(.alto-contraste) .text-gray-500,
         html:not(.dark):not(.alto-contraste) .text-gray-600 {
-            color: #1a1a1a !important; 
+            color: #1a1a1a !important;
             font-weight: 600 !important;
         }
-        
-        html:not(.dark):not(.alto-contraste) .border-gray-100, 
+
+        html:not(.dark):not(.alto-contraste) .border-gray-100,
         html:not(.dark):not(.alto-contraste) .border-gray-200 {
             border-color: #cccccc !important;
         }
-        
+
         html:not(.dark):not(.alto-contraste) .bg-gray-50 {
             background-color: #ffffff !important;
         }
@@ -73,19 +74,24 @@
             border-color: #FFFF00 !important;
         }
 
-        html.alto-contraste h1, html.alto-contraste h2, html.alto-contraste h3, 
-        html.alto-contraste h4, html.alto-contraste p, html.alto-contraste span, 
-        html.alto-contraste i, html.alto-contraste label {
+        html.alto-contraste h1,
+        html.alto-contraste h2,
+        html.alto-contraste h3,
+        html.alto-contraste h4,
+        html.alto-contraste p,
+        html.alto-contraste span,
+        html.alto-contraste i,
+        html.alto-contraste label {
             color: #FFFFFF !important;
         }
 
-        html.alto-contraste a, 
+        html.alto-contraste a,
         html.alto-contraste button {
             color: #FFFF00 !important;
             border-color: #FFFF00 !important;
         }
 
-        html.alto-contraste .bg-brand, 
+        html.alto-contraste .bg-brand,
         html.alto-contraste .bg-gray-100,
         html.alto-contraste .bg-gray-200,
         html.alto-contraste .bg-red-50,
@@ -107,9 +113,15 @@
         * {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
         }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
         /* Menu Mobile Escondido */
         #mobile-menu.hidden {
@@ -117,13 +129,14 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 dark:bg-darkBg dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- CABEÇALHO (HEADER) SUPERIOR -->
     <header class="bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
+
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center gap-3 cursor-pointer">
                     <div class="bg-brand text-white p-2.5 rounded-lg flex-shrink-0">
@@ -137,50 +150,66 @@
                 <!-- Navegação Desktop -->
                 <nav class="hidden md:flex items-center gap-8">
                     <!-- Início agora é inativo, Campanhas é o link ativo -->
-                    <a href="index.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Início</a>
-                    <a href="campanhas.html" class="font-bold text-brand border-b-2 border-brand py-2 transition-colors hover:text-brandHover">Campanhas</a>
-                    <a href="educativo.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Saiba Mais</a>
+                    <a href="index.html"
+                        class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Início</a>
+                    <a href="campanhas.html"
+                        class="font-bold text-brand border-b-2 border-brand py-2 transition-colors hover:text-brandHover">Campanhas</a>
+                    <a href="educativo.html"
+                        class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Saiba
+                        Mais</a>
                 </nav>
 
                 <!-- Ações e Acessibilidade -->
                 <div class="flex items-center gap-2 sm:gap-4">
-                    
+
                     <!-- Menu de Acessibilidade -->
                     <div class="relative">
-                        <button id="btn-acessibilidade" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Menu de Acessibilidade">
+                        <button id="btn-acessibilidade"
+                            class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Menu de Acessibilidade">
                             <i data-lucide="accessibility" class="w-5 h-5"></i>
                         </button>
-                        
+
                         <!-- Dropdown Acessibilidade -->
-                        <div id="menu-acessibilidade" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
+                        <div id="menu-acessibilidade"
+                            class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
                             <div class="mb-3">
-                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho do Texto</span>
+                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho
+                                    do Texto</span>
                                 <div class="flex justify-between gap-2">
-                                    <button onclick="alterarFonte(-2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
-                                    <button onclick="resetarFonte()" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
-                                    <button onclick="alterarFonte(2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
+                                    <button onclick="alterarFonte(-2)"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
+                                    <button onclick="resetarFonte()"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
+                                    <button onclick="alterarFonte(2)"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
                                 </div>
                             </div>
                             <hr class="border-gray-200 dark:border-gray-800 mb-3">
-                            <button onclick="toggleAltoContraste()" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                            <button onclick="toggleAltoContraste()"
+                                class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
                                 <i data-lucide="eye" class="w-4 h-4"></i> Alto Contraste
                             </button>
                         </div>
                     </div>
 
                     <!-- Botão Modo Escuro -->
-                    <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Alternar Tema">
+                    <button id="theme-toggle"
+                        class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        aria-label="Alternar Tema">
                         <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
                     </button>
 
                     <!-- Botão UBS (Apenas Desktop) -->
-                    <a href="admin/login.html" class="hidden md:flex bg-brand hover:bg-brandHover text-white px-5 py-2.5 rounded-xl font-bold transition-colors shadow-md items-center gap-2">
+                    <a href="admin/login.html"
+                        class="hidden md:flex bg-brand hover:bg-brandHover text-white px-5 py-2.5 rounded-xl font-bold transition-colors shadow-md items-center gap-2">
                         <i data-lucide="calendar-plus" class="w-5 h-5"></i>
                         Área da UBS
                     </a>
 
                     <!-- Botão Menu Mobile -->
-                    <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-brand p-2 focus:outline-none">
+                    <button id="mobile-menu-btn"
+                        class="md:hidden text-gray-600 dark:text-gray-300 hover:text-brand p-2 focus:outline-none">
                         <i data-lucide="menu" class="w-7 h-7"></i>
                     </button>
                 </div>
@@ -188,13 +217,19 @@
         </div>
 
         <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 shadow-lg absolute w-full z-40">
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 shadow-lg absolute w-full z-40">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                <a href="index.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Início</a>
-                <a href="campanhas.html" class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Campanhas</a>
-                <a href="educativo.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Saiba Mais</a>
+                <a href="index.html"
+                    class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Início</a>
+                <a href="campanhas.html"
+                    class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Campanhas</a>
+                <a href="educativo.html"
+                    class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Saiba
+                    Mais</a>
                 <div class="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
-                <a href="admin/login.html" class="w-full bg-brand text-white font-bold py-3 px-2 rounded-xl flex items-center justify-center gap-2 mt-2">
+                <a href="admin/login.html"
+                    class="w-full bg-brand text-white font-bold py-3 px-2 rounded-xl flex items-center justify-center gap-2 mt-2">
                     <i data-lucide="calendar-plus" class="w-5 h-5"></i>
                     Área da UBS
                 </a>
@@ -204,174 +239,113 @@
 
     <!-- ÁREA DE CONTEÚDO PRINCIPAL (Lista de Campanhas) -->
     <main class="flex-grow w-full">
-        
+
         <!-- Cabeçalho da Página -->
         <div class="bg-brand text-white py-12 px-4 border-b border-brandHover">
             <div class="max-w-7xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Campanhas na Região</h2>
-                <p class="text-red-100 font-medium max-w-2xl mx-auto">Verifique a lista completa de ações de coleta de sangue programadas. Sua participação é fundamental para mantermos os estoques seguros na região de Angatuba.</p>
+                <p class="text-red-100 font-medium max-w-2xl mx-auto">Verifique a lista completa de ações de coleta de
+                    sangue programadas.</p>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            
-            <!-- Barra de Busca e Filtros -->
-            <div class="flex flex-col md:flex-row justify-between gap-4 mb-10 pb-8 border-b border-gray-200 dark:border-gray-800">
+
+            <!-- Barra de Busca -->
+            <div
+                class="flex flex-col md:flex-row justify-between gap-4 mb-10 pb-8 border-b border-gray-200 dark:border-gray-800">
                 <div class="relative w-full md:w-1/2 lg:w-96">
                     <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
-                    <input type="text" placeholder="Buscar por cidade, local ou organizador..." class="w-full bg-white dark:bg-darkCard border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 pl-12 pr-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white shadow-sm transition-all">
-                </div>
-                
-                <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 md:pb-0">
-                    <button class="whitespace-nowrap bg-brand text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm border border-brand transition-colors">
-                        Todas
-                    </button>
-                    <button class="whitespace-nowrap bg-white dark:bg-darkCard hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
-                        Angatuba
-                    </button>
-                    <button class="whitespace-nowrap bg-white dark:bg-darkCard hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
-                        Campina do Monte Alegre
-                    </button>
-                    <button class="whitespace-nowrap bg-white dark:bg-darkCard hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
-                        Buri
-                    </button>
+                    <input type="text" placeholder="Buscar por cidade, local ou organizador..."
+                        class="w-full bg-white dark:bg-darkCard border border-gray-300 dark:border-gray-700 rounded-xl py-3.5 pl-12 pr-4 font-medium focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand dark:text-white shadow-sm transition-all">
                 </div>
             </div>
 
             <!-- Grid de Campanhas -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
+
                 <!-- Card 1: Angatuba -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
-                    <div class="bg-gray-100 dark:bg-gray-800 p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <span class="bg-brand text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Inscrições Abertas</span>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">Restam 12 vagas</span>
+                <!-- Card: Em Andamento -->
+                <div onclick="window.location.href='detalhes-campanha.html'"
+                    class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-all cursor-pointer hover:-translate-y-1">
+                    <div class="relative h-40 overflow-hidden">
+                        <img src="./assets/doacaodesangue.jpeg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span
+                            class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse inline-block"></span>
+                            Em Andamento
+                        </span>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Campanha Solidária de Inverno</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Organizado por: UBS Central Angatuba</p>
-                        
-                        <div class="space-y-3 mt-auto mb-6">
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="calendar" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm">Sábado, 15 de Junho - 08:00</span>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Campanha do Dia Mundial do
+                            Doador</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">UBS Central Angatuba</p>
+                        <div class="space-y-2 mt-auto mb-5">
+                            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                <i data-lucide="calendar" class="w-4 h-4 text-brand shrink-0"></i>
+                                <span class="text-sm">Hoje, 11 de Maio — 07:00 às 17:00</span>
                             </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm line-clamp-1">Posto de Saúde Central, Centro</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="users" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm">38 confirmados / 50 vagas</span>
+                            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-brand shrink-0"></i>
+                                <span class="text-sm line-clamp-1">Ginásio Municipal, Av. Principal</span>
                             </div>
                         </div>
-                        <a href="detalhes-campanha.html" class="w-full block bg-brand hover:bg-brandHover text-white font-bold py-3 rounded-xl transition-colors shadow-sm text-center">
+                        <span
+                            class="w-full block bg-brand hover:bg-brandHover text-white font-bold py-3 rounded-xl transition-colors text-center text-sm">
                             Inscrever-se
-                        </a>
+                        </span>
                     </div>
                 </div>
-
-                <!-- Card 2: Campina do Monte Alegre -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
-                    <div class="bg-gray-100 dark:bg-gray-800 p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <span class="bg-brand text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Inscrições Abertas</span>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">Restam 40 vagas</span>
+                <!-- Card: Finalizada -->
+                <div
+                    class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full opacity-75">
+                    <div class="relative h-40 overflow-hidden">
+                        <img src="./assets/doacaodesangue.jpeg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover grayscale">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span
+                            class="absolute top-3 left-3 bg-gray-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Finalizada
+                        </span>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Mutirão Pela Vida - Campina</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Organizado por: Secretaria Municipal de Saúde</p>
-                        
-                        <div class="space-y-3 mt-auto mb-6">
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="calendar" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm">Quarta, 20 de Junho - 09:00</span>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Mutirão Solidário de Maio</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">UBS Vila Nova — Angatuba</p>
+                        <div class="space-y-2 mt-auto mb-5">
+                            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                <i data-lucide="calendar" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                                <span class="text-sm line-through text-gray-400">Sábado, 03 de Maio — 08:00</span>
                             </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm line-clamp-1">Ginásio de Esportes Municipal</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg"><i data-lucide="users" class="w-4 h-4 text-brand"></i></div>
-                                <span class="font-semibold text-sm">10 confirmados / 50 vagas</span>
+                            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                                <span class="text-sm line-clamp-1 text-gray-400">Centro Comunitário, Bairro Alto</span>
                             </div>
                         </div>
-                        <a href="detalhes-campanha.html" class="w-full block bg-brand hover:bg-brandHover text-white font-bold py-3 rounded-xl transition-colors shadow-sm text-center">
-                            Inscrever-se
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3: Buri (Em Breve) -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
-                    <div class="bg-gray-100 dark:bg-gray-800 p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <span class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Em Breve</span>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">Data a confirmar</span>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Ação Empresa Amiga - Buri</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Organizado por: Associação Comercial e Voluntários</p>
-                        
-                        <div class="space-y-3 mt-auto mb-6">
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200 opacity-60">
-                                <div class="bg-gray-200 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm">Previsão: Julho/2026</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200 opacity-60">
-                                <div class="bg-gray-200 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm line-clamp-1">A definir</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200 opacity-60">
-                                <div class="bg-gray-200 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="users" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm">0 confirmados / -- vagas</span>
-                            </div>
-                        </div>
-                        <button disabled class="w-full bg-gray-100 dark:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl cursor-not-allowed border border-gray-200 dark:border-gray-700 text-center">
-                            Aguardando Abertura
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 4: Esgotado -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow opacity-70">
-                    <div class="bg-gray-100 dark:bg-gray-800 p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <span class="bg-red-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Vagas Esgotadas</span>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">0 vagas</span>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Doação Igreja Matriz</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Organizado por: Grupo de Jovens Angatuba</p>
-                        
-                        <div class="space-y-3 mt-auto mb-6">
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm line-through">Domingo, 02 de Junho - 08:00</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm line-clamp-1">Salão Paroquial</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-                                <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="users" class="w-4 h-4 text-gray-500"></i></div>
-                                <span class="font-semibold text-sm text-brand">60 confirmados / 60 vagas</span>
-                            </div>
-                        </div>
-                        <button disabled class="w-full bg-gray-200 dark:bg-gray-800 text-gray-500 font-bold py-3 rounded-xl cursor-not-allowed border border-gray-300 dark:border-gray-700 text-center">
-                            Inscrições Encerradas
-                        </button>
+                        <span
+                            class="w-full block bg-gray-100 dark:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl text-center text-sm cursor-default border border-gray-200 dark:border-gray-700">
+                            Encerrada
+                        </span>
                     </div>
                 </div>
 
             </div>
-            
+
             <!-- Paginação Simples (Exemplo Visual) -->
             <div class="mt-12 flex justify-center">
                 <nav class="flex items-center gap-2">
-                    <button class="p-2 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-brand transition-colors shadow-sm disabled:opacity-50" disabled>
+                    <button
+                        class="p-2 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-brand transition-colors shadow-sm disabled:opacity-50"
+                        disabled>
                         <i data-lucide="chevron-left" class="w-5 h-5"></i>
                     </button>
-                    <button class="w-10 h-10 rounded-lg bg-brand text-white font-bold shadow-sm flex items-center justify-center">1</button>
-                    <button class="w-10 h-10 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-brand hover:border-brand transition-colors shadow-sm flex items-center justify-center font-bold">2</button>
-                    <button class="p-2 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-brand transition-colors shadow-sm">
+                    <button
+                        class="w-10 h-10 rounded-lg bg-brand text-white font-bold shadow-sm flex items-center justify-center">1</button>
+                    <button
+                        class="w-10 h-10 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-brand hover:border-brand transition-colors shadow-sm flex items-center justify-center font-bold">2</button>
+                    <button
+                        class="p-2 rounded-lg bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-brand transition-colors shadow-sm">
                         <i data-lucide="chevron-right" class="w-5 h-5"></i>
                     </button>
                 </nav>
@@ -384,7 +358,7 @@
     <footer class="bg-white dark:bg-darkCard border-t border-gray-200 dark:border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                
+
                 <div class="flex items-center gap-2 opacity-80">
                     <i data-lucide="droplet" class="w-5 h-5 text-brand"></i>
                     <span class="font-bold text-gray-900 dark:text-white">Amigos do Sangue</span>
@@ -397,7 +371,8 @@
 
                 <!-- Acesso Administrativo -->
                 <div>
-                    <a href="admin/login.html" class="text-sm font-bold text-gray-500 hover:text-brand transition-colors flex items-center gap-2">
+                    <a href="admin/login.html"
+                        class="text-sm font-bold text-gray-500 hover:text-brand transition-colors flex items-center gap-2">
                         <i data-lucide="lock" class="w-4 h-4"></i> Acesso Restrito (Organizadores)
                     </a>
                 </div>
@@ -415,25 +390,25 @@
         // (Idêntica à index.html para consistência)
         // ==========================================
         const htmlElement = document.documentElement;
-        
+
         function toggleTheme() {
             htmlElement.classList.toggle('dark');
             const isDark = htmlElement.classList.contains('dark');
             const iconName = isDark ? 'sun' : 'moon';
-            
+
             const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
             themeIcons.forEach(icon => icon.setAttribute('data-lucide', iconName));
             lucide.createIcons();
-            
+
             localStorage.setItem('temaAmigosSangue', isDark ? 'dark' : 'light');
         }
 
         const themeBtn = document.getElementById('theme-toggle');
-        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
         const btnAcessibilidade = document.getElementById('btn-acessibilidade');
         const menuAcessibilidade = document.getElementById('menu-acessibilidade');
-        
+
         btnAcessibilidade.addEventListener('click', (e) => {
             e.stopPropagation();
             menuAcessibilidade.classList.toggle('hidden');
@@ -446,7 +421,7 @@
         });
 
         let tamanhoFonteBase = parseInt(localStorage.getItem('tamanhoFonteAmigosSangue')) || 18;
-        
+
         function aplicarFonte() {
             htmlElement.style.fontSize = tamanhoFonteBase + 'px';
             localStorage.setItem('tamanhoFonteAmigosSangue', tamanhoFonteBase);
@@ -454,8 +429,8 @@
 
         function alterarFonte(valor) {
             tamanhoFonteBase += valor;
-            if(tamanhoFonteBase < 14) tamanhoFonteBase = 14; 
-            if(tamanhoFonteBase > 26) tamanhoFonteBase = 26; 
+            if (tamanhoFonteBase < 14) tamanhoFonteBase = 14;
+            if (tamanhoFonteBase > 26) tamanhoFonteBase = 26;
             aplicarFonte();
         }
 
@@ -468,32 +443,33 @@
             htmlElement.classList.toggle('alto-contraste');
             const isAltoContraste = htmlElement.classList.contains('alto-contraste');
             localStorage.setItem('altoContrasteAmigosSangue', isAltoContraste);
-            menuAcessibilidade.classList.add('hidden'); 
+            menuAcessibilidade.classList.add('hidden');
         }
 
         function carregarPreferencias() {
-            aplicarFonte(); 
-            
-            if(localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
+            aplicarFonte();
+
+            if (localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
                 htmlElement.classList.add('alto-contraste');
             }
-            
-            if(localStorage.getItem('temaAmigosSangue') === 'dark') {
+
+            if (localStorage.getItem('temaAmigosSangue') === 'dark') {
                 htmlElement.classList.add('dark');
                 const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
                 themeIcons.forEach(icon => icon.setAttribute('data-lucide', 'sun'));
                 lucide.createIcons();
             }
         }
-        
-        carregarPreferencias(); 
+
+        carregarPreferencias();
 
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         mobileBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
     </script>
 </body>
+
 </html>
