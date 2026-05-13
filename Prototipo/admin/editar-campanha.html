@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Amigos do Sangue - Nova Campanha</title>
+    <title>Amigos do Sangue - Editar Campanha</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -110,6 +110,7 @@
             display: none;
         }
 
+        /* Campos de formulário */
         .field-input {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -142,11 +143,7 @@
             box-shadow: 0 0 0 3px rgba(213, 0, 0, 0.12);
         }
 
-        .field-input:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
+        /* Radio tabs do tipo de inscrição */
         .radio-tab input[type="radio"] {
             display: none;
         }
@@ -185,6 +182,12 @@
             color: #ff6b6b;
         }
 
+        /* Preview do botão */
+        #preview-box {
+            transition: all 0.3s ease;
+        }
+
+        /* Toast */
         #toast {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
@@ -219,7 +222,7 @@
                     <a href="dashboard.html"
                         class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Painel</a>
                     <a href="nova-campanha.html"
-                        class="font-bold text-brand border-b-2 border-brand py-2 transition-colors">Nova Campanha</a>
+                        class="font-bold text-brand border-b-2 border-brand py-2 transition-colors">Editar Campanha</a>
                 </nav>
 
                 <div class="flex items-center gap-2 sm:gap-4">
@@ -298,11 +301,6 @@
                 <a href="dashboard.html"
                     class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Painel
                     de Controle</a>
-                <a href="campanhas-admin.html"
-                    class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Minhas
-                    Campanhas</a>
-                <a href="relatorios.html"
-                    class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Relatórios</a>
                 <div class="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
                 <div class="flex justify-between items-center px-2 py-3">
                     <span class="font-semibold text-gray-700 dark:text-gray-300">Modo Escuro</span>
@@ -329,17 +327,23 @@
                     <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
                         <a href="dashboard.html" class="hover:text-brand transition-colors">Painel</a>
                         <i data-lucide="chevron-right" class="w-3 h-3"></i>
-                        <span class="text-gray-800 dark:text-gray-200 font-semibold">Nova Campanha</span>
+                        <span class="text-gray-800 dark:text-gray-200 font-semibold">Editar Campanha</span>
                     </div>
-                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Nova Campanha</h2>
-                    <p class="text-gray-600 dark:text-gray-400 font-medium mt-1">Preencha os detalhes e publique uma
-                        nova ação de doação.</p>
+                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Editar Campanha</h2>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium mt-1">Atualize as informações e configure o
+                        botão de inscrição.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span
+                        class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 py-1.5 px-3 rounded-full font-bold text-xs border border-green-200 dark:border-green-800 flex items-center gap-1">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div> Em Andamento
+                    </span>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                <!-- FORMULÁRIO -->
+                <!-- FORMULÁRIO (coluna principal) -->
                 <div class="lg:col-span-2 space-y-6">
 
                     <!-- Informações da campanha -->
@@ -357,39 +361,23 @@
                                     Nome da Campanha <span class="text-brand">*</span>
                                 </label>
                                 <input id="campo-nome" type="text" class="field-input"
-                                    placeholder="Ex: Mutirão Solidário de Inverno">
-                            </div>
-
-                            <!-- Organizador (readonly) -->
-                            <div>
-                                <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">
-                                    Organizador Responsável
-                                </label>
-                                <input type="text" value="UBS Central Angatuba" disabled
-                                    class="field-input opacity-60 cursor-not-allowed">
-                                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1.5 font-medium">Preenchido
-                                    automaticamente com os dados da sua instituição.</p>
+                                    placeholder="Ex: Campanha Solidária de Inverno"
+                                    value="Campanha Solidária de Inverno">
                             </div>
 
                             <!-- Data e horário -->
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">
                                         Data <span class="text-brand">*</span>
                                     </label>
-                                    <input id="campo-data" type="date" class="field-input">
+                                    <input id="campo-data" type="date" class="field-input" value="2026-06-15">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">
-                                        Início <span class="text-brand">*</span>
+                                        Horário <span class="text-brand">*</span>
                                     </label>
-                                    <input id="campo-inicio" type="time" class="field-input">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">
-                                        Término <span class="text-brand">*</span>
-                                    </label>
-                                    <input id="campo-termino" type="time" class="field-input">
+                                    <input id="campo-horario" type="time" class="field-input" value="08:00">
                                 </div>
                             </div>
 
@@ -399,24 +387,35 @@
                                     Local / Endereço <span class="text-brand">*</span>
                                 </label>
                                 <input id="campo-local" type="text" class="field-input"
-                                    placeholder="Ex: Posto de Saúde Central — Rua das Flores, 100">
+                                    placeholder="Ex: Posto de Saúde Central — Rua das Flores, 100"
+                                    value="Posto de Saúde Central">
                             </div>
 
                             <!-- Descrição -->
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">
-                                    Descrição / Orientações
+                                    Descrição
                                 </label>
                                 <textarea id="campo-descricao" rows="4" class="field-input resize-none"
-                                    placeholder="Instruções para os doadores: o que levar, cuidados antes da doação..."></textarea>
+                                    placeholder="Descreva os detalhes da campanha, requisitos para doação, o que levar...">Venha fazer parte dessa ação solidária! Doadores de todos os tipos sanguíneos são bem-vindos. Traga documento com foto e não esqueça de tomar café da manhã antes.</textarea>
                                 <p class="text-xs text-gray-400 dark:text-gray-500 mt-1.5 font-medium">Este texto
                                     aparece na página pública da campanha.</p>
+                            </div>
+
+                            <!-- Status -->
+                            <div>
+                                <label
+                                    class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">Status</label>
+                                <select id="campo-status" class="field-input">
+                                    <option value="andamento" selected>Em Andamento</option>
+                                    <option value="realizada">Realizada</option>
+                                </select>
                             </div>
 
                         </div>
                     </div>
 
-                    <!-- Botão de inscrição -->
+                    <!-- Configuração do botão de inscrição -->
                     <div
                         class="bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 sm:p-8">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
@@ -425,7 +424,7 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Escolha como os doadores vão se
                             inscrever na campanha.</p>
 
-                        <!-- Tipo -->
+                        <!-- Seletor de tipo -->
                         <div class="flex flex-col sm:flex-row gap-3 mb-6">
                             <div class="radio-tab flex-1">
                                 <input type="radio" id="tipo-link" name="tipo-inscricao" value="link" checked
@@ -450,7 +449,7 @@
                             <input id="campo-link" type="url" class="field-input"
                                 placeholder="https://forms.google.com/..." oninput="atualizarPreview()">
                             <p class="text-xs text-gray-400 dark:text-gray-500 mt-1.5 font-medium">O doador será
-                                redirecionado para esse endereço ao clicar no botão.</p>
+                                redirecionado para esse endereço ao clicar em "Quero me inscrever".</p>
                         </div>
 
                         <!-- Campo WhatsApp -->
@@ -474,26 +473,29 @@
                                         pré-definida <span class="text-gray-400 font-medium">(opcional)</span></label>
                                     <textarea id="campo-mensagem-wpp" rows="2" class="field-input resize-none"
                                         placeholder="Olá! Gostaria de me inscrever na campanha de doação."
-                                        oninput="atualizarPreview()"></textarea>
+                                        oninput="atualizarPreview()">Olá! Gostaria de me inscrever na campanha de doação.</textarea>
                                 </div>
                             </div>
                         </div>
-
                         <div
                             class="bg-blue-50 dark:bg-blue-900/10 rounded-2xl border border-blue-100 dark:border-blue-900/30 p-5 mt-6">
                             <div class="flex items-start gap-3">
                                 <i data-lucide="info" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i>
                                 <p class="text-xs text-blue-700 dark:text-blue-300 font-medium leading-relaxed">O link
-                                    ou WhatsApp configurado aqui aparecerá no botão de inscrição da página pública da
-                                    campanha.</p>
+                                    ou
+                                    WhatsApp configurado aqui aparecerá no botão de inscrição da página pública da
+                                    campanha.
+                                </p>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- SIDEBAR -->
+                <!-- SIDEBAR: Preview + Ações -->
                 <div class="lg:col-span-1 space-y-6">
+
+                    <!-- Preview do botão -->
 
                     <!-- Ações -->
                     <div
@@ -501,16 +503,25 @@
                         <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
                             Ações</h3>
 
-                        <button onclick="publicarCampanha()"
+                        <button onclick="salvarCampanha()"
                             class="w-full bg-brand hover:bg-brandHover text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-md">
-                            <i data-lucide="send" class="w-4 h-4"></i> Publicar Campanha
+                            <i data-lucide="save" class="w-4 h-4"></i> Salvar Alterações
                         </button>
 
                         <a href="dashboard.html"
                             class="w-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors border border-gray-200 dark:border-gray-700 text-sm">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Cancelar
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
                         </a>
+
+                        <hr class="border-gray-100 dark:border-gray-800 my-1">
+
+                        <button onclick="confirmarEncerramento()"
+                            class="w-full text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand font-semibold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors text-sm border border-transparent hover:border-red-100 dark:hover:border-red-900/30">
+                            <i data-lucide="flag" class="w-4 h-4"></i> Encerrar Campanha
+                        </button>
                     </div>
+
+                    <!-- Dica -->
 
                 </div>
             </div>
@@ -532,37 +543,90 @@
         </div>
     </footer>
 
-    <!-- Toast -->
+    <!-- Toast de confirmação -->
     <div id="toast"
         class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-sm py-3.5 px-6 rounded-2xl shadow-2xl flex items-center gap-2 whitespace-nowrap">
         <i data-lucide="check-circle" class="w-4 h-4 text-green-400 dark:text-green-600"></i>
-        <span id="toast-msg">Campanha publicada com sucesso!</span>
+        <span id="toast-msg">Campanha salva com sucesso!</span>
+    </div>
+
+    <!-- Modal encerramento -->
+    <div id="modal-encerrar" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+        style="background: rgba(0,0,0,0.5)">
+        <div
+            class="bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-2xl p-8 max-w-sm w-full">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                    <i data-lucide="flag" class="w-5 h-5 text-brand"></i>
+                </div>
+                <h4 class="text-lg font-extrabold text-gray-900 dark:text-white">Encerrar campanha?</h4>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mb-6 leading-relaxed">O status será alterado
+                para <strong>Realizada</strong> e a campanha deixará de aceitar inscrições. Essa ação pode ser revertida
+                editando o status manualmente.</p>
+            <div class="flex gap-3">
+                <button onclick="fecharModal()"
+                    class="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-3 rounded-xl transition-colors border border-gray-200 dark:border-gray-700 text-sm">Cancelar</button>
+                <button onclick="encerrarCampanha()"
+                    class="flex-1 bg-brand hover:bg-brandHover text-white font-bold py-3 rounded-xl transition-colors text-sm">Encerrar</button>
+            </div>
+        </div>
     </div>
 
     <script>
         lucide.createIcons();
 
+        // ==========================================
+        // LÓGICA DE TIPO DE INSCRIÇÃO
+        // ==========================================
         function atualizarTipo() {
             const tipo = document.querySelector('input[name="tipo-inscricao"]:checked').value;
-            document.getElementById('campo-link-wrapper').classList.toggle('hidden', tipo !== 'link');
-            document.getElementById('campo-whatsapp-wrapper').classList.toggle('hidden', tipo !== 'whatsapp');
+            const wrapperLink = document.getElementById('campo-link-wrapper');
+            const wrapperWpp = document.getElementById('campo-whatsapp-wrapper');
+
+            if (tipo === 'link') {
+                wrapperLink.classList.remove('hidden');
+                wrapperWpp.classList.add('hidden');
+            } else {
+                wrapperLink.classList.add('hidden');
+                wrapperWpp.classList.remove('hidden');
+            }
             atualizarPreview();
             lucide.createIcons();
         }
 
+        function atualizarPreview() {
+            const tipo = document.querySelector('input[name="tipo-inscricao"]:checked').value;
+            const label = document.getElementById('campo-label-btn').value || 'Quero me inscrever';
+            const previewLabel = document.getElementById('preview-label');
+            const previewBtn = document.getElementById('preview-btn');
+            const previewDestino = document.getElementById('preview-destino');
+            const previewIcon = document.getElementById('preview-icon');
 
-        function publicarCampanha() {
-            const nome = document.getElementById('campo-nome').value.trim();
-            const data = document.getElementById('campo-data').value;
-            const local = document.getElementById('campo-local').value.trim();
+            previewLabel.textContent = label;
 
-            if (!nome || !data || !local) {
-                mostrarToast('Preencha os campos obrigatórios.');
-                return;
+            if (tipo === 'link') {
+                const url = document.getElementById('campo-link').value;
+                previewBtn.href = url || '#';
+                previewIcon.setAttribute('data-lucide', 'link');
+                previewDestino.textContent = url ? url : 'Nenhum link definido';
+            } else {
+                const numero = document.getElementById('campo-whatsapp').value.replace(/\D/g, '');
+                const msg = encodeURIComponent(document.getElementById('campo-mensagem-wpp').value);
+                const wppUrl = numero ? `https://wa.me/55${numero}${msg ? '?text=' + msg : ''}` : '#';
+                previewBtn.href = wppUrl;
+                previewIcon.setAttribute('data-lucide', 'message-circle');
+                previewDestino.textContent = numero ? `+55 ${document.getElementById('campo-whatsapp').value}` : 'Nenhum número definido';
             }
 
-            mostrarToast('Campanha publicada com sucesso!');
-            setTimeout(() => { window.location.href = 'dashboard.html'; }, 2000);
+            lucide.createIcons();
+        }
+
+        // ==========================================
+        // SALVAR
+        // ==========================================
+        function salvarCampanha() {
+            mostrarToast('Campanha salva com sucesso!');
         }
 
         function mostrarToast(msg) {
@@ -577,7 +641,26 @@
             }, 3000);
         }
 
-        // Tema e acessibilidade
+        // ==========================================
+        // ENCERRAR
+        // ==========================================
+        function confirmarEncerramento() {
+            document.getElementById('modal-encerrar').classList.remove('hidden');
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-encerrar').classList.add('hidden');
+        }
+
+        function encerrarCampanha() {
+            document.getElementById('campo-status').value = 'realizada';
+            fecharModal();
+            mostrarToast('Campanha encerrada e marcada como Realizada.');
+        }
+
+        // ==========================================
+        // TEMA E ACESSIBILIDADE
+        // ==========================================
         const htmlElement = document.documentElement;
 
         function toggleTheme() {
@@ -623,6 +706,7 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+        // Inicializa preview
         atualizarPreview();
     </script>
     <script src="../vlibras/vlibras.js"></script>

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Amigos do Sangue - Painel de Controle</title>
-    
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Configuração do Tailwind para Cores e Dark Mode -->
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -28,40 +25,36 @@
             }
         }
     </script>
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        
-        /* ========================================================= */
-        /* AJUSTES DE ACESSIBILIDADE E ALTO CONTRASTE                */
-        /* ========================================================= */
+
         html {
-            font-size: 18px; 
+            font-size: 18px;
             transition: font-size 0.3s ease;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
+        body {
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
         }
 
-        html:not(.dark):not(.alto-contraste) .text-gray-400, 
-        html:not(.dark):not(.alto-contraste) .text-gray-500, 
+        html:not(.dark):not(.alto-contraste) .text-gray-400,
+        html:not(.dark):not(.alto-contraste) .text-gray-500,
         html:not(.dark):not(.alto-contraste) .text-gray-600 {
-            color: #1a1a1a !important; 
+            color: #1a1a1a !important;
             font-weight: 600 !important;
         }
-        
-        html:not(.dark):not(.alto-contraste) .border-gray-100, 
+
+        html:not(.dark):not(.alto-contraste) .border-gray-100,
         html:not(.dark):not(.alto-contraste) .border-gray-200 {
             border-color: #cccccc !important;
         }
-        
+
         html:not(.dark):not(.alto-contraste) .bg-gray-50 {
             background-color: #f9fafb !important;
         }
 
-        /* TEMA DE ALTO CONTRASTE DE ACESSIBILIDADE */
         html.alto-contraste body,
         html.alto-contraste main,
         html.alto-contraste header,
@@ -72,19 +65,27 @@
             border-color: #FFFF00 !important;
         }
 
-        html.alto-contraste h1, html.alto-contraste h2, html.alto-contraste h3, 
-        html.alto-contraste h4, html.alto-contraste p, html.alto-contraste span, 
-        html.alto-contraste i, html.alto-contraste label, html.alto-contraste li, html.alto-contraste th, html.alto-contraste td {
+        html.alto-contraste h1,
+        html.alto-contraste h2,
+        html.alto-contraste h3,
+        html.alto-contraste h4,
+        html.alto-contraste p,
+        html.alto-contraste span,
+        html.alto-contraste i,
+        html.alto-contraste label,
+        html.alto-contraste li,
+        html.alto-contraste th,
+        html.alto-contraste td {
             color: #FFFFFF !important;
         }
 
-        html.alto-contraste a, 
+        html.alto-contraste a,
         html.alto-contraste button {
             color: #FFFF00 !important;
             border-color: #FFFF00 !important;
         }
 
-        html.alto-contraste .bg-brand, 
+        html.alto-contraste .bg-brand,
         html.alto-contraste .bg-gray-100,
         html.alto-contraste .bg-gray-200,
         html.alto-contraste .bg-red-50,
@@ -103,230 +104,252 @@
         * {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
         }
-        
+
         #mobile-menu.hidden {
             display: none;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-darkPanel dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- CABEÇALHO DO PAINEL -->
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-darkPanel dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- CABEÇALHO -->
     <header class="bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
+
                 <!-- Logo -->
                 <a href="../index.html" class="flex items-center gap-3 cursor-pointer">
                     <img src="../assets/logo-lightmode.png" alt="Amigos do Sangue" class="h-10 dark:hidden">
                     <img src="../assets/logo-darkmode.png" alt="Amigos do Sangue" class="h-10 hidden dark:block">
                 </a>
 
-                <!-- Navegação Administrativa Desktop -->
+                <!-- Navegação Desktop -->
                 <nav class="hidden md:flex items-center gap-8 ml-8 mr-auto">
-                    <a href="dashboard.html" class="font-bold text-brand border-b-2 border-brand py-2 transition-colors">Painel</a>
-                    <a href="campanhas-admin.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Minhas Campanhas</a>
-                    <a href="relatorios.html" class="font-semibold text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-brand py-2 transition-colors">Relatórios</a>
+                    <a href="dashboard.html"
+                        class="font-bold text-brand border-b-2 border-brand py-2 transition-colors">Painel</a>
                 </nav>
 
-                <!-- Ações do Usuário e Acessibilidade -->
+                <!-- Ações -->
                 <div class="flex items-center gap-2 sm:gap-4">
-                    
-                    <!-- Menu de Acessibilidade -->
+
+                    <!-- Acessibilidade -->
                     <div class="relative hidden sm:block">
-                        <button id="btn-acessibilidade" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Menu de Acessibilidade">
+                        <button id="btn-acessibilidade"
+                            class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Menu de Acessibilidade">
                             <i data-lucide="accessibility" class="w-5 h-5"></i>
                         </button>
-                        
-                        <!-- Dropdown Acessibilidade -->
-                        <div id="menu-acessibilidade" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
+
+                        <div id="menu-acessibilidade"
+                            class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg p-3 z-50">
                             <div class="mb-3">
-                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho do Texto</span>
+                                <span class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tamanho
+                                    do Texto</span>
                                 <div class="flex justify-between gap-2">
-                                    <button onclick="alterarFonte(-2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
-                                    <button onclick="resetarFonte()" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
-                                    <button onclick="alterarFonte(2)" class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
+                                    <button onclick="alterarFonte(-2)"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A-</button>
+                                    <button onclick="resetarFonte()"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A</button>
+                                    <button onclick="alterarFonte(2)"
+                                        class="flex-1 p-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-bold text-sm text-gray-800 dark:text-white">A+</button>
                                 </div>
                             </div>
                             <hr class="border-gray-200 dark:border-gray-800 mb-3">
-                            <button onclick="toggleAltoContraste()" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                            <button onclick="toggleAltoContraste()"
+                                class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded font-semibold text-sm text-gray-700 dark:text-gray-300 transition-colors">
                                 <i data-lucide="eye" class="w-4 h-4"></i> Alto Contraste
                             </button>
                         </div>
                     </div>
 
-                    <!-- Botão Modo Escuro -->
-                    <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hidden sm:block" aria-label="Alternar Tema">
+                    <!-- Modo Escuro -->
+                    <button id="theme-toggle"
+                        class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hidden sm:block"
+                        aria-label="Alternar Tema">
                         <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
                     </button>
 
-                    <!-- Divisor -->
                     <div class="hidden sm:block h-8 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
 
-                    <!-- Perfil Logado -->
+                    <!-- Perfil -->
                     <div class="flex items-center gap-3">
                         <div class="hidden md:block text-right">
                             <p class="text-sm font-bold text-gray-900 dark:text-white leading-none">UBS Central</p>
                             <p class="text-xs text-gray-500 font-medium mt-1">Angatuba</p>
                         </div>
-                        <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold border-2 border-red-100 dark:border-red-900 shadow-sm">
+                        <div
+                            class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold border-2 border-red-100 dark:border-red-900 shadow-sm">
                             UC
                         </div>
                     </div>
 
-                    <!-- Botão Sair -->
-                    <a href="login.html" class="ml-2 p-2 text-gray-500 hover:text-brand transition-colors hidden md:block" title="Sair do Sistema">
+                    <!-- Sair -->
+                    <a href="login.html"
+                        class="ml-2 p-2 text-gray-500 hover:text-brand transition-colors hidden md:block"
+                        title="Sair do Sistema">
                         <i data-lucide="log-out" class="w-5 h-5"></i>
                     </a>
 
-                    <!-- Botão Menu Mobile -->
-                    <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-brand p-2 focus:outline-none ml-2">
+                    <!-- Menu Mobile -->
+                    <button id="mobile-menu-btn"
+                        class="md:hidden text-gray-600 dark:text-gray-300 hover:text-brand p-2 focus:outline-none ml-2">
                         <i data-lucide="menu" class="w-7 h-7"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 shadow-lg absolute w-full z-40">
+        <!-- Menu Mobile -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-darkCard border-b border-gray-200 dark:border-gray-800 shadow-lg absolute w-full z-40">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                <div class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-xl mb-4 border border-gray-200 dark:border-gray-700">
-                    <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold">UC</div>
+                <div
+                    class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-xl mb-4 border border-gray-200 dark:border-gray-700">
+                    <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold">
+                        UC</div>
                     <div>
                         <p class="text-sm font-bold text-gray-900 dark:text-white">UBS Central Angatuba</p>
                         <p class="text-xs text-gray-500">ubs.centro@angatuba.sp.gov.br</p>
                     </div>
                 </div>
 
-                <a href="dashboard.html" class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Painel de Controle</a>
-                <a href="campanhas-admin.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Minhas Campanhas</a>
-                <a href="relatorios.html" class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Relatórios</a>
-                
+                <a href="dashboard.html"
+                    class="w-full text-left font-bold text-brand py-3 px-2 rounded-lg bg-red-50 dark:bg-red-900/20">Painel
+                    de Controle</a>
+                <a href="dashboard.html"
+                    class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Minhas
+                    Campanhas</a>
+                <a href="relatorios.html"
+                    class="w-full text-left font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg">Relatórios</a>
+
                 <div class="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
-                
+
                 <div class="flex justify-between items-center px-2 py-3">
                     <span class="font-semibold text-gray-700 dark:text-gray-300">Modo Escuro</span>
-                    <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
                         <i id="theme-icon-mobile" data-lucide="moon" class="w-5 h-5"></i>
                     </button>
                 </div>
 
-                <a href="login.html" class="w-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white font-bold py-3 px-2 rounded-xl flex items-center justify-center gap-2 mt-2 border border-gray-200 dark:border-gray-700">
+                <a href="login.html"
+                    class="w-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white font-bold py-3 px-2 rounded-xl flex items-center justify-center gap-2 mt-2 border border-gray-200 dark:border-gray-700">
                     <i data-lucide="log-out" class="w-5 h-5"></i> Sair do Sistema
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- ÁREA DE CONTEÚDO PRINCIPAL (Dashboard) -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="flex-grow w-full py-8 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Boas-vindas e Ação Principal -->
+
+            <!-- Boas-vindas -->
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
                 <div>
                     <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Visão Geral</h2>
-                    <p class="text-gray-600 dark:text-gray-400 font-medium mt-1">Acompanhe o desempenho das suas campanhas de doação.</p>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium mt-1">Acompanhe o desempenho das suas
+                        campanhas de doação.</p>
                 </div>
                 <div class="w-full sm:w-auto">
-                    <a href="nova-campanha.html" class="w-full sm:w-auto bg-brand hover:bg-brandHover text-white px-6 py-3.5 rounded-xl font-bold transition-colors shadow-lg flex items-center justify-center gap-2">
+                    <a href="nova-campanha.html"
+                        class="w-full sm:w-auto bg-brand hover:bg-brandHover text-white px-6 py-3.5 rounded-xl font-bold transition-colors shadow-lg flex items-center justify-center gap-2">
                         <i data-lucide="plus-circle" class="w-5 h-5"></i> Nova Campanha
                     </a>
                 </div>
             </div>
 
-            <!-- Grade de Métricas Rápidas -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                
-                <!-- Métrica 1 -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 flex items-center gap-5">
-                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800/50">
+            <!-- Métricas: apenas campanhas ativas e total -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+
+                <!-- Campanhas Ativas -->
+                <div
+                    class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 flex items-center gap-5">
+                    <div
+                        class="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl text-green-600 dark:text-green-400 border border-green-100 dark:border-green-800/50">
                         <i data-lucide="activity" class="w-8 h-8"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Campanhas Ativas</p>
+                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Campanhas
+                            Ativas</p>
                         <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mt-1">2</h3>
                     </div>
                 </div>
 
-                <!-- Métrica 2 -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 flex items-center gap-5">
-                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl text-green-600 dark:text-green-400 border border-green-100 dark:border-green-800/50">
-                        <i data-lucide="users" class="w-8 h-8"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Inscritos este mês</p>
-                        <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mt-1">98</h3>
-                    </div>
-                </div>
-
-                <!-- Métrica 3 -->
-                <div class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 flex items-center gap-5 sm:col-span-2 lg:col-span-1">
+                <!-- Total de Campanhas -->
+                <div
+                    class="bg-white dark:bg-darkCard rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 flex items-center gap-5">
                     <div class="bg-brand/10 dark:bg-brand/20 p-4 rounded-xl text-brand border border-brand/20">
-                        <i data-lucide="droplet" class="w-8 h-8"></i>
+                        <i data-lucide="calendar-check" class="w-8 h-8"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Total Histórico</p>
-                        <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mt-1">1.240</h3>
+                        <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Total de
+                            Campanhas Realizadas</p>
+                        <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mt-1">3</h3>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Tabela de Campanhas Recentes -->
-            <div class="bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
-                <div class="p-6 border-b border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <!-- Tabela de Campanhas -->
+            <div
+                class="bg-white dark:bg-darkCard rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div
+                    class="p-6 border-b border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                        <i data-lucide="calendar-days" class="w-5 h-5 text-gray-500"></i> Suas Campanhas Recentes
+                        <i data-lucide="calendar-days" class="w-5 h-5 text-gray-500"></i> Suas Campanhas
                     </h3>
-                    <a href="campanhas-admin.html" class="text-sm font-bold text-brand hover:underline">Ver todo o histórico</a>
+                    <a href="dashboard.html" class="text-sm font-bold text-brand hover:underline">Ver todo o
+                        histórico</a>
                 </div>
-                
+
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse min-w-[800px]">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
                         <thead>
                             <tr class="bg-gray-50 dark:bg-gray-900/50">
-                                <th class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">Campanha</th>
-                                <th class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">Data</th>
-                                <th class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">Status</th>
-                                <th class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800 text-center">Inscritos</th>
-                                <th class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800 text-right">Ações</th>
+                                <th
+                                    class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">
+                                    Campanha</th>
+                                <th
+                                    class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">
+                                    Data</th>
+                                <th
+                                    class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800">
+                                    Status</th>
+                                <th
+                                    class="p-5 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-200 dark:border-gray-800 text-right">
+                                    Ações</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                            
-                            <!-- Linha 1 (Ativa) -->
+
+                            <!-- Campanha em andamento -->
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-900/30 transition-colors">
                                 <td class="p-5">
-                                    <p class="font-bold text-gray-900 dark:text-white text-base">Campanha Solidária de Inverno</p>
+                                    <p class="font-bold text-gray-900 dark:text-white text-base">Campanha Solidária de
+                                        Inverno</p>
                                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">
                                         <i data-lucide="map-pin" class="w-3 h-3"></i> Posto de Saúde Central
                                     </p>
                                 </td>
                                 <td class="p-5 font-medium text-gray-700 dark:text-gray-300">15/06/2026</td>
                                 <td class="p-5">
-                                    <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 py-1.5 px-3 rounded-full font-bold text-xs border border-green-200 dark:border-green-800 flex items-center w-max gap-1">
+                                    <span
+                                        class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 py-1.5 px-3 rounded-full font-bold text-xs border border-green-200 dark:border-green-800 flex items-center w-max gap-1">
                                         <div class="w-2 h-2 rounded-full bg-green-500"></div> Em Andamento
                                     </span>
                                 </td>
-                                <td class="p-5 text-center">
-                                    <div class="inline-flex flex-col items-center">
-                                        <span class="font-extrabold text-lg text-gray-900 dark:text-white">38</span>
-                                        <span class="text-xs text-gray-500 font-medium">de 50 vagas</span>
-                                    </div>
-                                    <!-- Barra de progresso -->
-                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-2 overflow-hidden">
-                                        <div class="bg-brand h-1.5 rounded-full" style="width: 76%"></div>
-                                    </div>
-                                </td>
                                 <td class="p-5 text-right">
-                                    <a href="inscritos.html" class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors border border-gray-200 dark:border-gray-700 text-sm">
-                                        <i data-lucide="users" class="w-4 h-4"></i> Gerenciar
+                                    <a href="editar-campanha.html"
+                                        class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors border border-gray-200 dark:border-gray-700 text-sm">
+                                        <i data-lucide="edit" class="w-4 h-4"></i> Editar
                                     </a>
                                 </td>
                             </tr>
 
-                            <!-- Linha 2 (Agendada) -->
+                            <!-- Campanha em andamento 2 -->
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-900/30 transition-colors">
                                 <td class="p-5">
                                     <p class="font-bold text-gray-900 dark:text-white text-base">Ação Outubro Rosa</p>
@@ -336,24 +359,20 @@
                                 </td>
                                 <td class="p-5 font-medium text-gray-700 dark:text-gray-300">10/10/2026</td>
                                 <td class="p-5">
-                                    <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 py-1.5 px-3 rounded-full font-bold text-xs border border-blue-200 dark:border-blue-800 flex items-center w-max gap-1">
-                                        <i data-lucide="clock" class="w-3 h-3"></i> Agendada
+                                    <span
+                                        class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 py-1.5 px-3 rounded-full font-bold text-xs border border-green-200 dark:border-green-800 flex items-center w-max gap-1">
+                                        <div class="w-2 h-2 rounded-full bg-green-500"></div> Em Andamento
                                     </span>
                                 </td>
-                                <td class="p-5 text-center">
-                                    <div class="inline-flex flex-col items-center">
-                                        <span class="font-extrabold text-lg text-gray-900 dark:text-white">0</span>
-                                        <span class="text-xs text-gray-500 font-medium">de 100 vagas</span>
-                                    </div>
-                                </td>
                                 <td class="p-5 text-right">
-                                    <a href="inscritos.html" class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors border border-gray-200 dark:border-gray-700 text-sm">
+                                    <a href="editar-campanha.html"
+                                        class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors border border-gray-200 dark:border-gray-700 text-sm">
                                         <i data-lucide="edit" class="w-4 h-4"></i> Editar
                                     </a>
                                 </td>
                             </tr>
 
-                            <!-- Linha 3 (Encerrada) -->
+                            <!-- Campanha realizada -->
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-900/30 transition-colors opacity-70">
                                 <td class="p-5">
                                     <p class="font-bold text-gray-900 dark:text-white text-base">Doação de Carnaval</p>
@@ -363,18 +382,14 @@
                                 </td>
                                 <td class="p-5 font-medium text-gray-700 dark:text-gray-300">10/02/2026</td>
                                 <td class="p-5">
-                                    <span class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 py-1.5 px-3 rounded-full font-bold text-xs border border-gray-300 dark:border-gray-600 flex items-center w-max gap-1">
-                                        <i data-lucide="check-circle" class="w-3 h-3"></i> Concluída
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 py-1.5 px-3 rounded-full font-bold text-xs border border-gray-300 dark:border-gray-600 flex items-center w-max gap-1">
+                                        <i data-lucide="check-circle" class="w-3 h-3"></i> Realizada
                                     </span>
                                 </td>
-                                <td class="p-5 text-center">
-                                    <div class="inline-flex flex-col items-center">
-                                        <span class="font-extrabold text-lg text-gray-900 dark:text-white">50</span>
-                                        <span class="text-xs text-gray-500 font-medium">Bolsas coletadas</span>
-                                    </div>
-                                </td>
                                 <td class="p-5 text-right">
-                                    <button class="inline-flex items-center gap-2 text-brand font-bold py-2 px-4 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-sm">
+                                    <button
+                                        class="inline-flex items-center gap-2 text-brand font-bold py-2 px-4 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-sm">
                                         <i data-lucide="download" class="w-4 h-4"></i> Relatório
                                     </button>
                                 </td>
@@ -388,16 +403,14 @@
         </div>
     </main>
 
-    <!-- RODAPÉ SIMPLIFICADO -->
+    <!-- RODAPÉ -->
     <footer class="bg-white dark:bg-darkCard border-t border-gray-200 dark:border-gray-800 mt-auto relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                
                 <div class="flex items-center gap-2 opacity-80">
                     <i data-lucide="droplet" class="w-4 h-4 text-brand"></i>
                     <span class="font-bold text-sm text-gray-900 dark:text-white">Amigos do Sangue</span>
                 </div>
-
                 <div class="text-xs font-medium text-gray-500 text-center">
                     Sistema Administrativo • Angatuba e Região
                 </div>
@@ -405,36 +418,28 @@
         </div>
     </footer>
 
-    <!-- Scripts de Interação -->
     <script>
-        // Inicializar ícones
         lucide.createIcons();
 
-        // ==========================================
-        // LÓGICA DE TEMA E ACESSIBILIDADE 
-        // ==========================================
         const htmlElement = document.documentElement;
-        
+
         function toggleTheme() {
             htmlElement.classList.toggle('dark');
             const isDark = htmlElement.classList.contains('dark');
             const iconName = isDark ? 'sun' : 'moon';
-            
-            const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
-            themeIcons.forEach(icon => icon.setAttribute('data-lucide', iconName));
+            document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => icon.setAttribute('data-lucide', iconName));
             lucide.createIcons();
-            
             localStorage.setItem('temaAmigosSangue', isDark ? 'dark' : 'light');
         }
 
         const themeBtn = document.getElementById('theme-toggle');
         const themeBtnMobile = document.getElementById('theme-toggle-mobile');
-        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
-        if(themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+        if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
 
         const btnAcessibilidade = document.getElementById('btn-acessibilidade');
         const menuAcessibilidade = document.getElementById('menu-acessibilidade');
-        
+
         if (btnAcessibilidade) {
             btnAcessibilidade.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -449,7 +454,7 @@
         });
 
         let tamanhoFonteBase = parseInt(localStorage.getItem('tamanhoFonteAmigosSangue')) || 18;
-        
+
         function aplicarFonte() {
             htmlElement.style.fontSize = tamanhoFonteBase + 'px';
             localStorage.setItem('tamanhoFonteAmigosSangue', tamanhoFonteBase);
@@ -457,8 +462,8 @@
 
         function alterarFonte(valor) {
             tamanhoFonteBase += valor;
-            if(tamanhoFonteBase < 14) tamanhoFonteBase = 14; 
-            if(tamanhoFonteBase > 26) tamanhoFonteBase = 26; 
+            if (tamanhoFonteBase < 14) tamanhoFonteBase = 14;
+            if (tamanhoFonteBase > 26) tamanhoFonteBase = 26;
             aplicarFonte();
         }
 
@@ -471,30 +476,26 @@
             htmlElement.classList.toggle('alto-contraste');
             const isAltoContraste = htmlElement.classList.contains('alto-contraste');
             localStorage.setItem('altoContrasteAmigosSangue', isAltoContraste);
-            if(menuAcessibilidade) menuAcessibilidade.classList.add('hidden'); 
+            if (menuAcessibilidade) menuAcessibilidade.classList.add('hidden');
         }
 
         function carregarPreferencias() {
-            aplicarFonte(); 
-            
-            if(localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
+            aplicarFonte();
+            if (localStorage.getItem('altoContrasteAmigosSangue') === 'true') {
                 htmlElement.classList.add('alto-contraste');
             }
-            
-            if(localStorage.getItem('temaAmigosSangue') === 'dark') {
+            if (localStorage.getItem('temaAmigosSangue') === 'dark') {
                 htmlElement.classList.add('dark');
-                const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
-                themeIcons.forEach(icon => icon.setAttribute('data-lucide', 'sun'));
+                document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => icon.setAttribute('data-lucide', 'sun'));
                 lucide.createIcons();
             }
         }
-        
-        carregarPreferencias(); 
+
+        carregarPreferencias();
 
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        if(mobileBtn) {
+        if (mobileBtn) {
             mobileBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -502,4 +503,5 @@
     </script>
     <script src="../vlibras/vlibras.js"></script>
 </body>
+
 </html>
